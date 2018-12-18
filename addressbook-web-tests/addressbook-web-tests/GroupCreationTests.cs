@@ -42,14 +42,19 @@ namespace addressbook_web_tests
         [Test]
         public void GroupCreationTest()
         {
+            // open home page
             driver.Navigate().GoToUrl(baseURL);
+            // login
             driver.FindElement(By.Name("user")).Clear();
             driver.FindElement(By.Name("user")).SendKeys("admin");
             driver.FindElement(By.Name("pass")).Clear();
             driver.FindElement(By.Name("pass")).SendKeys("secret");
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+            // go to groups page
             driver.FindElement(By.LinkText("groups")).Click();
+            // init new group creation
             driver.FindElement(By.Name("new")).Click();
+            // fill group form
             driver.FindElement(By.Name("group_name")).Click();
             driver.FindElement(By.Name("group_name")).Clear();
             driver.FindElement(By.Name("group_name")).SendKeys("TestD1");
@@ -59,8 +64,11 @@ namespace addressbook_web_tests
             driver.FindElement(By.Name("group_footer")).Click();
             driver.FindElement(By.Name("group_footer")).Clear();
             driver.FindElement(By.Name("group_footer")).SendKeys("TestD3");
+            // submit group creation
             driver.FindElement(By.Name("submit")).Click();
+            // return to groups page
             driver.FindElement(By.LinkText("group page")).Click();
+            // logout
             driver.FindElement(By.LinkText("Logout")).Click();
         }
         private bool IsElementPresent(By by)
