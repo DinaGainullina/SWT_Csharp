@@ -10,7 +10,7 @@ using OpenQA.Selenium.Support.UI;
 namespace addressbook_web_tests
 {
     [TestFixture]
-    public class UntitledTestCase
+    public class ContactCreationTests
     {
         private IWebDriver driver;
         private StringBuilder verificationErrors;
@@ -40,15 +40,28 @@ namespace addressbook_web_tests
         }
 
         [Test]
-        public void TheUntitledTestCaseTest()
+        public void ContactCreationTest()
         {
-            driver.Navigate().GoToUrl(baseURL);
-            driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys("admin");
-            driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys("secret");
-            driver.FindElement(By.XPath("//input[@value='Login']")).Click();
-            driver.FindElement(By.LinkText("add new")).Click();
+            OpenHomePage();
+            Login();
+            InitContactCreation();
+            FillContactForm();
+            SubmitContactCreation();
+            Logout();
+        }
+
+        private void Logout()
+        {
+            driver.FindElement(By.LinkText("Logout")).Click();
+        }
+
+        private void SubmitContactCreation()
+        {
+            driver.FindElement(By.Name("submit")).Click();
+        }
+
+        private void FillContactForm()
+        {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
             driver.FindElement(By.Name("firstname")).SendKeys("TestD_name");
@@ -71,9 +84,27 @@ namespace addressbook_web_tests
             driver.FindElement(By.Name("mobile")).Click();
             driver.FindElement(By.Name("mobile")).Clear();
             driver.FindElement(By.Name("mobile")).SendKeys("TestD_mobile");
-            driver.FindElement(By.Name("submit")).Click();
-            driver.FindElement(By.LinkText("Logout")).Click();
         }
+
+        private void InitContactCreation()
+        {
+            driver.FindElement(By.LinkText("add new")).Click();
+        }
+
+        private void Login()
+        {
+            driver.FindElement(By.Name("user")).Clear();
+            driver.FindElement(By.Name("user")).SendKeys("admin");
+            driver.FindElement(By.Name("pass")).Clear();
+            driver.FindElement(By.Name("pass")).SendKeys("secret");
+            driver.FindElement(By.XPath("//input[@value='Login']")).Click();
+        }
+
+        private void OpenHomePage()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+        }
+
         private bool IsElementPresent(By by)
         {
             try
