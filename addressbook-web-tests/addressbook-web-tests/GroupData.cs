@@ -12,12 +12,16 @@ namespace addressbook_web_tests
         private string header = "";
         private string footer = "";
 
-        public GroupData(string name, string header, string footer)
+        public GroupData(string name)
+        {
+            this.name = name;
+        }
+    /*    public GroupData(string name, string header, string footer)
         {
             this.name = name;
             this.header = name;
             this.footer = footer;
-        }
+        }*/
 
         public string Name
         {

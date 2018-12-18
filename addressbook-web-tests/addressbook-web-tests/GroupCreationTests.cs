@@ -46,7 +46,10 @@ namespace addressbook_web_tests
             Login(new AccountData("admin", "secret"));
             GoToGroupsPage();
             InitGroupCreation();
-            FillGroupForm(new GroupData("TestD1", "TestD2", "TestD3"));
+            GroupData group = new GroupData("TestD1");
+            group.Header = "TestD2";
+            group.Footer = "TestD3";
+            FillGroupForm(group);
             SubmitGroupCreation();
             ReturnToGroupsPage();
             Logout();
