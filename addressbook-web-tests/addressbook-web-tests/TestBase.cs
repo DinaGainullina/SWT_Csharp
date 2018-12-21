@@ -15,6 +15,7 @@ namespace addressbook_web_tests
         protected IWebDriver driver;
         private StringBuilder verificationErrors;
         protected string baseURL;
+
         protected LoginHelper loginHelper;
         protected NavigationHelper navigator;
         protected GroupHelper groupHelper;
@@ -46,8 +47,7 @@ namespace addressbook_web_tests
             }
             Assert.AreEqual("", verificationErrors.ToString());
         }
-
-              
+                    
 
 
     }
