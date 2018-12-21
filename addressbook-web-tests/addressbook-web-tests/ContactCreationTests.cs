@@ -43,9 +43,10 @@ namespace addressbook_web_tests
         public void ContactCreationTest()
         {
             OpenHomePage();
-            Login("admin", "secret");
+            Login(new AccountData("admin", "secret"));
             InitContactCreation();
-            FillContactForm("TestD_name", "TestD_lastname");
+            ContactData contact = new ContactData("TestD1", "TestD2");
+            FillContactForm(contact);
             SubmitContactCreation();
             Logout();
         }
@@ -60,30 +61,14 @@ namespace addressbook_web_tests
             driver.FindElement(By.Name("submit")).Click();
         }
 
-        private void FillContactForm(string firstname, string lastname)
+        private void FillContactForm(ContactData contact)
         {
             driver.FindElement(By.Name("firstname")).Click();
             driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(firstname);
-            /*driver.FindElement(By.Name("middlename")).Click();
-              driver.FindElement(By.Name("middlename")).Clear();
-              driver.FindElement(By.Name("middlename")).SendKeys("TestD_surname"); */
+            driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
             driver.FindElement(By.Name("lastname")).Click();
             driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(lastname);
-            /* driver.FindElement(By.Name("nickname")).Click();
-             driver.FindElement(By.Name("nickname")).Clear();
-             driver.FindElement(By.Name("nickname")).SendKeys("TestD_nick");
-             driver.FindElement(By.Name("email")).Click();
-             driver.FindElement(By.Name("email")).Clear();
-             driver.FindElement(By.Name("email")).SendKeys("TestD_email");
-             driver.FindElement(By.Name("home")).Click();
-             driver.FindElement(By.Name("home")).Click();
-             driver.FindElement(By.Name("home")).Clear();
-             driver.FindElement(By.Name("home")).SendKeys("TestD_hometel");
-             driver.FindElement(By.Name("mobile")).Click();
-             driver.FindElement(By.Name("mobile")).Clear();
-             driver.FindElement(By.Name("mobile")).SendKeys("TestD_mobile");*/
+            driver.FindElement(By.Name("lastname")).SendKeys(contact.Lastname);
         }
 
         private void InitContactCreation()
@@ -91,12 +76,12 @@ namespace addressbook_web_tests
             driver.FindElement(By.LinkText("add new")).Click();
         }
 
-        private void Login(string username, string password)
+        private void Login(AccountData account)
         {
             driver.FindElement(By.Name("user")).Clear();
-            driver.FindElement(By.Name("user")).SendKeys(username);
+            driver.FindElement(By.Name("user")).SendKeys(account.Username);
             driver.FindElement(By.Name("pass")).Clear();
-            driver.FindElement(By.Name("pass")).SendKeys(password);
+            driver.FindElement(By.Name("pass")).SendKeys(account.Password);
             driver.FindElement(By.XPath("//input[@value='Login']")).Click();
         }
 
