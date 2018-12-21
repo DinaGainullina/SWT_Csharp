@@ -14,9 +14,9 @@ namespace addressbook_web_tests
         [Test]
         public void GroupRemovalTest()
         {
-            GoToHomePage();
+            navigator.GoToHomePage();
             loginHelper.Login(new AccountData("admin","secret"));
-            GoToGroupsPage();
+            navigator.GoToGroupsPage();
             SelectGroup(1);
             RemoveGroup();
             ReturnToGroupPage();

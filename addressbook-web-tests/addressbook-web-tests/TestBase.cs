@@ -16,7 +16,7 @@ namespace addressbook_web_tests
         private StringBuilder verificationErrors;
         protected string baseURL;
         protected LoginHelper loginHelper;
- 
+        protected NavigationHelper navigator;
 
         [SetUp]
         public void SetupTest()
@@ -26,6 +26,7 @@ namespace addressbook_web_tests
             verificationErrors = new StringBuilder();
 
             loginHelper = new LoginHelper(driver);
+            navigator = new NavigationHelper(driver, baseURL);
         }
 
         [TearDown]
@@ -42,20 +43,6 @@ namespace addressbook_web_tests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
-        protected void GoToHomePage()
-        {
-            driver.Navigate().GoToUrl(baseURL);
-        }
-
-        
-
-
-
-        
-        protected void GoToGroupsPage()
-        {
-            driver.FindElement(By.LinkText("groups")).Click();
-        }
 
         protected void ReturnToGroupPage()
         {

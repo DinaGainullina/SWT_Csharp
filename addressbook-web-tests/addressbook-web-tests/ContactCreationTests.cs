@@ -14,7 +14,7 @@ namespace addressbook_web_tests
         [Test]
         public void ContactCreationTest()
         {
-            GoToHomePage();
+            navigator.GoToHomePage();
             loginHelper.Login(new AccountData("admin", "secret"));
             InitContactCreation();
             ContactData contact = new ContactData("TestD1", "TestD2");

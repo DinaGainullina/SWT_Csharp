@@ -15,9 +15,9 @@ namespace addressbook_web_tests
         [Test]
         public void GroupCreationTest()
         {
-            GoToHomePage();
+            navigator.GoToHomePage();
             loginHelper.Login(new AccountData("admin", "secret"));
-            GoToGroupsPage();
+            navigator.GoToGroupsPage();
             InitGroupCreation();
             GroupData group = new GroupData("TestD1");
             group.Header = "TestD2";
