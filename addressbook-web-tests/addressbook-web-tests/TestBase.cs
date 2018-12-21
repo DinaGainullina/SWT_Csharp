@@ -15,7 +15,7 @@ namespace addressbook_web_tests
         protected IWebDriver driver;
         private StringBuilder verificationErrors;
         protected string baseURL;
-        private bool acceptNextAlert = true;
+ 
 
         [SetUp]
         public void SetupTest()
