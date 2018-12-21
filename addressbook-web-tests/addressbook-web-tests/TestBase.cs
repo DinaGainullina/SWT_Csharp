@@ -18,6 +18,7 @@ namespace addressbook_web_tests
         protected LoginHelper loginHelper;
         protected NavigationHelper navigator;
         protected GroupHelper groupHelper;
+        protected ContactHelper contactHelper;
 
         [SetUp]
         public void SetupTest()
@@ -29,7 +30,7 @@ namespace addressbook_web_tests
             loginHelper = new LoginHelper(driver);
             navigator = new NavigationHelper(driver, baseURL);
             groupHelper = new GroupHelper(driver);
-
+            contactHelper = new ContactHelper(driver);
         }
 
         [TearDown]
@@ -46,29 +47,8 @@ namespace addressbook_web_tests
             Assert.AreEqual("", verificationErrors.ToString());
         }
 
+              
 
-       
-
-        //методы для контактов
-        protected void SubmitContactCreation()
-        {
-            driver.FindElement(By.Name("submit")).Click();
-        }
-
-        protected void FillContactForm(ContactData contact)
-        {
-            driver.FindElement(By.Name("firstname")).Click();
-            driver.FindElement(By.Name("firstname")).Clear();
-            driver.FindElement(By.Name("firstname")).SendKeys(contact.Firstname);
-            driver.FindElement(By.Name("lastname")).Click();
-            driver.FindElement(By.Name("lastname")).Clear();
-            driver.FindElement(By.Name("lastname")).SendKeys(contact.Lastname);
-        }
-
-        protected void InitContactCreation()
-        {
-            driver.FindElement(By.LinkText("add new")).Click();
-        }
 
     }
 }

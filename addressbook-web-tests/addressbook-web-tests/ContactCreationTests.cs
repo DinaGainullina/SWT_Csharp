@@ -16,10 +16,10 @@ namespace addressbook_web_tests
         {
             navigator.GoToHomePage();
             loginHelper.Login(new AccountData("admin", "secret"));
-            InitContactCreation();
+            contactHelper.InitContactCreation();
             ContactData contact = new ContactData("TestD1", "TestD2");
-            FillContactForm(contact);
-            SubmitContactCreation();
+            contactHelper.FillContactForm(contact);
+            contactHelper.SubmitContactCreation();
             loginHelper.Logout();
         }
     }
