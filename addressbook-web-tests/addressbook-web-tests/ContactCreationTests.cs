@@ -15,12 +15,12 @@ namespace addressbook_web_tests
         public void ContactCreationTest()
         {
             GoToHomePage();
-            Login(new AccountData("admin", "secret"));
+            loginHelper.Login(new AccountData("admin", "secret"));
             InitContactCreation();
             ContactData contact = new ContactData("TestD1", "TestD2");
             FillContactForm(contact);
             SubmitContactCreation();
-            Logout();
+            loginHelper.Logout();
         }
     }
 }

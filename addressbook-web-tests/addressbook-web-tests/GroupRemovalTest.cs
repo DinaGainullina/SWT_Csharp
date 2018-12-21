@@ -15,12 +15,12 @@ namespace addressbook_web_tests
         public void GroupRemovalTest()
         {
             GoToHomePage();
-            Login(new AccountData("admin","secret"));
+            loginHelper.Login(new AccountData("admin","secret"));
             GoToGroupsPage();
             SelectGroup(1);
             RemoveGroup();
             ReturnToGroupPage();
-            Logout();
+            loginHelper.Logout();
         }
                
 

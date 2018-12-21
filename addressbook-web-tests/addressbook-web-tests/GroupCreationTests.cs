@@ -16,7 +16,7 @@ namespace addressbook_web_tests
         public void GroupCreationTest()
         {
             GoToHomePage();
-            Login(new AccountData("admin", "secret"));
+            loginHelper.Login(new AccountData("admin", "secret"));
             GoToGroupsPage();
             InitGroupCreation();
             GroupData group = new GroupData("TestD1");
@@ -25,7 +25,7 @@ namespace addressbook_web_tests
             FillGroupForm(group);
             SubmitGroupCreation();
             ReturnToGroupPage();
-            Logout();
+            loginHelper.Logout();
         }
 
     }
