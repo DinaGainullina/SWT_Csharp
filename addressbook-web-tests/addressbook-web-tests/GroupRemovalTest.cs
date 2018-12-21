@@ -17,9 +17,9 @@ namespace addressbook_web_tests
             navigator.GoToHomePage();
             loginHelper.Login(new AccountData("admin","secret"));
             navigator.GoToGroupsPage();
-            SelectGroup(1);
-            RemoveGroup();
-            ReturnToGroupPage();
+            groupHelper.SelectGroup(1);
+            groupHelper.RemoveGroup();
+            groupHelper.ReturnToGroupPage();
             loginHelper.Logout();
         }
                

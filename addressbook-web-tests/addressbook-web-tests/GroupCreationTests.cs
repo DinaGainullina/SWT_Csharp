@@ -18,13 +18,13 @@ namespace addressbook_web_tests
             navigator.GoToHomePage();
             loginHelper.Login(new AccountData("admin", "secret"));
             navigator.GoToGroupsPage();
-            InitGroupCreation();
+            groupHelper.InitGroupCreation();
             GroupData group = new GroupData("TestD1");
             group.Header = "TestD2";
             group.Footer = "TestD3";
-            FillGroupForm(group);
-            SubmitGroupCreation();
-            ReturnToGroupPage();
+            groupHelper.FillGroupForm(group);
+            groupHelper.SubmitGroupCreation();
+            groupHelper.ReturnToGroupPage();
             loginHelper.Logout();
         }
 
